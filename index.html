@@ -396,10 +396,13 @@ document.getElementById("signature").textContent = `- ${CONFIG.signature}`;
 
 const start = new Date(CONFIG.startDate + "T00:00:00");
 const today = new Date();
+
+// 현재 날짜의 시, 분, 초, 밀리초를 모두 0으로 초기화 (오늘 날짜의 00:00:00로 맞춤)
+today.setHours(0, 0, 0, 0); 
+
 const dayCount = Math.floor((today - start) / 86400000) + 1;
 document.getElementById("day-badge").textContent = `D+${dayCount}`;
 document.getElementById("headline-num").textContent = dayCount;
-
 const petalWrap = document.getElementById("petals");
 for (let i = 0; i < 14; i++) {
   const p = document.createElement("div");
